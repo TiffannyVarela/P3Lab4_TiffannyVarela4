@@ -44,6 +44,7 @@ int main()
 	int cont_libro=0;
 	int tam=10;
 	int opc_user=-1;
+	int posi=-6;
 	Usuario** lista = inicializar(tam);
 	Usuario* usuario;
 	string user, pass; /*names;
@@ -84,8 +85,22 @@ int main()
 					{
 						switch(opc=menuAdmin()){
 							case 1:
-								listaL[cont_libro]=newLibro();
-								cont_libro++;
+								for (int i = 0; i < cont_libro; ++i)
+								{
+									if(listaL[i]->getAutor()==" "){
+										posi=i;
+									}
+								}
+								if (posi!=-6)
+								{
+									listaL[posi]=newLibro();	
+								}
+								else if(posi==-6){
+									listaL[cont_libro]=newLibro();
+									cont_libro++;
+								}
+								else{}
+
 								printArrayLibro(listaL,tam);
 								break;
 
@@ -98,36 +113,33 @@ int main()
 								//
 								//
 								
-	for (int i = 0; i < 10; ++i)
-	{
-		if(i==pos_mod){
-			cout<<"Titulo: ";
-			getline(cin,title);
-			getline(cin,title);
-			cout<<"Autor: ";
-			getline(cin,autor);
-			getline(cin,autor);
-			cout<<"Anio de publicacion: ";
-			cin>>a_pub;
-			cout<<"Precio: ";
-			cin>>precio;
-			cout<<"Estado: ";
-			cin>>estado;
-			while(precio<0){
-				cout<<"Ingrese un Valor Valido"<<endl;
-				cout<<"Precio: ";
-				cin>>precio;
-			}
-			cout<<endl;
-			book->setTitle(title);
-			//*(array[pos])->setAutor(autor);
-			//*(array[pos])->setA_pub(a_pub);
-			//*(array[pos])->setPrecio(precio);
-			//*(array[pos])->setEstado(estado);
-			//array[pos]=libro;
-		}
-	}
-printArrayLibro(listaL,tam);
+								for (int i = 0; i < 10; ++i)
+								{
+									listaL[pos_mod]=new Libro();
+									if(i==pos_mod){
+										cout<<"Titulo: ";
+										getline(cin,title);
+										getline(cin,title);
+										cout<<"Autor: ";
+										getline(cin,autor);
+										getline(cin,autor);
+										cout<<"Anio de publicacion: ";
+										cin>>a_pub;
+										cout<<"Precio: ";
+										cin>>precio;
+										cout<<"Estado: ";
+										cin>>estado;
+										while(precio<0){
+											cout<<"Ingrese un Valor Valido"<<endl;
+											cout<<"Precio: ";
+											cin>>precio;
+										}
+										cout<<endl;
+										libro = new Libro(title,autor,a_pub,precio,estado);
+									}
+								}
+								listaL[pos_mod]=libro;
+							printArrayLibro(listaL,tam);
 								pos_mod=-1;
 								break;
 

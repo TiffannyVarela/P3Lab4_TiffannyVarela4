@@ -19,14 +19,14 @@ class Usuario
 		string getPass();
 		void setPass(string);
 
-		string getUser();
-		void setUSer(string);
+		string getName();
+		void setName(string);
 
-		string getUser();
-		void setUSer(string);
+		int getEdad();
+		void setEdad(int);
 
-		string getUser();
-		void setUSer(string);
+		double getDinero();
+		void setDinero(double);
 
 		~Usuario();
 	

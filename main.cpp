@@ -39,6 +39,7 @@ int main()
 	int cont_user=1;
 	int cont_libro=0;
 	int tam=10;
+	int opc_user=-1;
 	Usuario** lista = inicializar(tam);
 	Usuario* usuario;
 	string user, pass; /*names;
@@ -82,24 +83,69 @@ int main()
 								printArrayLibro(listaL,tam);
 								cout<<"\nIngrese la Posicion a Modificar: ";
 								cin>>pos_mod;
+								modLibro(listaL,pos_mod);
+								printArrayLibro(listaL,tam);
+								pos_mod=-1;
 								break;
 
 							case 3:
+								printArrayLibro(listaL,tam);
+								cout<<"\nIngrese la Posicion a Eliminar: ";
+								cin>>pos_mod;
+								listaL[pos_mod]=new Libro();
+								printArrayLibro(listaL,tam);
+								pos_mod=-1;
 								break;
 
 							case 4:
+								freeArrayLibro(listaL);
 								break;
 						}
-						cout<<"Desea volver al programa \n1.Si\n2.No"<<endl;
-						cin>>resp;
+						cout<<"Desea volver al programa como Admin\n1.Si\n2.No"<<endl;
+						cin>>resp_user;
 					} while (resp_user!=2);
+					resp_user=-1;
 				}
 				else{
 					for (int i = 1; i < 10; i++)
 					{
 						if (user==lista[i] -> getUser() && pass==lista[i]->getPass())
 						{
-							//cout<<"Usuario"<<endl;
+							do
+							{
+								switch(opc_user=menu()){
+									case 1:
+										printArrayLibro(listaL,tam);
+										cout<<"\nIngrese la Posicion a Comprar: ";
+										cin>>pos_mod;
+										if (lista[i]->getDinero()<listaL[pos_mod]->getPrecio() || listaL[pos_mod]->getEstado()=="Vendido")
+										{
+											cout<<"No se puede comprar"<<endl;
+										}
+										else{
+											cout<<"Comprado"<<endl;
+										}
+										break;
+
+									case 2:
+										break;
+
+									case 3:
+										break;
+
+									case 4:
+										break;
+
+									case 5:
+										break;
+
+									case 6:
+										break;
+								}
+								cout<<"Desea volver al programa como Usuario\n1.Si\n2.No"<<endl;
+								cin>>resp_user;
+							} while (resp_user!=2);
+							resp_user=-1;
 						}
 					}
 				}
@@ -126,15 +172,15 @@ int main()
 
 int menuInic(){//inicio metodo menu
     while(true){
-        cout<<"Menu\n1.Ingresar\n2.Registrar\n3.Salir"<<endl;
+        cout<<"Menu\n1.Ingresar\n2.Registrar"<<endl;
         cout<<"Ingrese una opcion: ";
         int opcion =0;
         cin>>opcion;
-        if(opcion>=1 && opcion<= 3){
+        if(opcion>=1 && opcion<= 2){
                 return opcion;
         }
 		else{
-        	cout<<"La opcion elegida no es valida, ingrese una opcion entre 1 y 3"<<endl;
+        	cout<<"La opcion elegida no es valida, ingrese una opcion entre 1 y 2"<<endl;
         }
  	}//end del while
         return 0;
@@ -169,16 +215,15 @@ int menuAdmin(){//inicio metodo menu
         <<"1.- Agregar Libro"<<endl
         <<"2.- Modificar Libro"<<endl
 		<<"3.- Eliminar Libro"<<endl
-		<<"4.- Borrar Registro de Libros"<<endl
-		<<"5.- Listar"<<endl;
+		<<"4.- Borrar Registro de Libros"<<endl;
         cout<<"Ingrese una opcion: ";
         int opcion =0;
         cin>>opcion;
-        if(opcion>=1 && opcion<= 5){
+        if(opcion>=1 && opcion<= 4){
                 return opcion;
         }
 		else{
-        	cout<<"La opcion elegida no es valida, ingrese una opcion entre 1 y 5"<<endl;
+        	cout<<"La opcion elegida no es valida, ingrese una opcion entre 1 y 4"<<endl;
         }
  	}//end del while
         return 0;
@@ -308,9 +353,9 @@ void modLibro(Libro** array,int pos){
 		cin>>precio;
 	}
 	cout<<endl;
-	array[pos]->setTitle(title);
+	//array[pos]->getTitle()->setTitle(title);
 	array[pos]->setAutor(autor);
-	array[pos]->setA_Pub(a_pub);
+	array[pos]->setA_pub(a_pub);
 	array[pos]->setPrecio(precio);
 	array[pos]->setEstado(estado);
 }

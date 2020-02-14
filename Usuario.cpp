@@ -30,7 +30,7 @@ string Usuario::getPass(){
 	return pass;
 }
 
-void Usuario::setPass(string){
+void Usuario::setPass(string pass){
 	pass=pass;
 }
 
@@ -38,7 +38,7 @@ string Usuario::getName(){
 	return name;
 }
 
-void Usuario::setName(string){
+void Usuario::setName(string name){
 	name=name;
 }
 
@@ -46,7 +46,7 @@ int Usuario::getEdad(){
 	return edad;
 }
 
-void Usuario::setEdad(int){
+void Usuario::setEdad(int edad){
 	edad=edad;
 }
 
@@ -54,7 +54,7 @@ double Usuario::getDinero(){
 	return dinero;
 }
 
-void Usuario::setDinero(double){
+void Usuario::setDinero(double dinero){
 	dinero=dinero;
 }
 

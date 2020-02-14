@@ -6,10 +6,11 @@
 class Libro
 {
 	private:
-		string title, autor, a_pub, precio, estado;
+		string title, autor, a_pub, estado;
+		double precio;
 	public:
 		Libro();
-		Libro(string,string,string,string,string);
+		Libro(string,string,string,double,string);
 
 		string getTitle();
 		void setTitle(string);
@@ -20,12 +21,12 @@ class Libro
 		string getA_pub();
 		void setA_pub(string);
 
-		string getPrecio();
-		void setPrecio(string);
+		double getPrecio();
+		void setPrecio(double);
 
 		string getEstado();
 		void setEstado(string);
-		
+
 		~Libro();
 	
 };

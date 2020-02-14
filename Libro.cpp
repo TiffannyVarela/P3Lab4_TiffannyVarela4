@@ -61,7 +61,7 @@ void Libro::setEstado(string estado){
 string Libro::toString(){
 	if (title=="a")
 	{
-		cout<<"Posicion Vacia"<<endl;
+		cout<<"Posicion Vacia Libro"<<endl;
 	}
 	else{
 		cout<<"Titulo: "<<title<<endl

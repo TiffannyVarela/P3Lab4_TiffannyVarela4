@@ -71,6 +71,7 @@ string Usuario::toString(){
 		<<"Nombre: "<<name<<endl
 		<<"Edad: "<<edad<<endl
 		<<"Dinero: "<<dinero<<endl;
+		cout<<endl;
 	}
 	return "";
 }

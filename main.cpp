@@ -1,7 +1,9 @@
 #include "Usuario.h"
 #include "Libro.h"
 #include <iostream>
+#include<cstdlib>
 #include <string>
+#include <array>
 using namespace std;
 
 int menuInic();
@@ -29,6 +31,8 @@ Usuario* newUsuario();
 Libro* newLibro();
 void modLibro(Libro**,int);
 
+void Ordenar(Libro**);
+
 
 int main()
 {
@@ -49,6 +53,9 @@ int main()
 	lista[0]=usuario;
 	Libro** listaL = inicializarLibro(tam);
 	Libro* libro;
+
+	string autor, titulo;
+	int compra;
 
 	int pos_mod=-1;
 	do
@@ -128,9 +135,49 @@ int main()
 										break;
 
 									case 2:
+										cout<<"Ingrese el Autor: ";
+										cin>>autor;
+										for (int i = 0; i < 10; ++i)
+										{
+											if(listaL[i]->getAutor()==autor)
+											{
+												cout<<"Desea Comprarlo\n1.Si\n2.No"<<endl;
+												cin>>compra;
+												if (compra==1)
+												{
+													if (lista[i]->getDinero()<listaL[pos_mod]->getPrecio() || listaL[pos_mod]->getEstado()=="Vendido")
+													{
+														cout<<"No se puede comprar"<<endl;
+													}
+													else{
+														cout<<"Comprado"<<endl;
+													}
+												}
+											}
+										}
 										break;
 
 									case 3:
+										cout<<"Ingrese el Titulo: ";
+										cin>>titulo;
+										for (int i = 0; i < 10; ++i)
+										{
+											if(listaL[i]->getTitle()==titulo)
+											{
+												cout<<"Desea Comprarlo\n1.Si\n2.No"<<endl;
+												cin>>compra;
+												if (compra==1)
+												{
+													if (lista[i]->getDinero()<listaL[pos_mod]->getPrecio() || listaL[pos_mod]->getEstado()=="Vendido")
+													{
+														cout<<"No se puede comprar"<<endl;
+													}
+													else{
+														cout<<"Comprado"<<endl;
+													}
+												}
+											}
+										}
 										break;
 
 									case 4:
@@ -334,28 +381,35 @@ Libro* newLibro(){
 void modLibro(Libro** array,int pos){
 	string title, autor, a_pub, estado;
 	double precio;
-	Libro* libro;
-	cout<<"Titulo: ";
-	getline(cin,title);
-	getline(cin,title);
-	cout<<"Autor: ";
-	getline(cin,autor);
-	getline(cin,autor);
-	cout<<"Anio de publicacion: ";
-	cin>>a_pub;
-	cout<<"Precio: ";
-	cin>>precio;
-	cout<<"Estado: ";
-	cin>>estado;
-	while(precio<0){
-		cout<<"Ingrese un Valor Valido"<<endl;
-		cout<<"Precio: ";
-		cin>>precio;
+	Libro* libro=array[pos];
+	for (int i = 0; i < 10; ++i)
+	{
+		if(i==pos){
+			cout<<"Titulo: ";
+			getline(cin,title);
+			getline(cin,title);
+			cout<<"Autor: ";
+			getline(cin,autor);
+			getline(cin,autor);
+			cout<<"Anio de publicacion: ";
+			cin>>a_pub;
+			cout<<"Precio: ";
+			cin>>precio;
+			cout<<"Estado: ";
+			cin>>estado;
+			while(precio<0){
+				cout<<"Ingrese un Valor Valido"<<endl;
+				cout<<"Precio: ";
+				cin>>precio;
+			}
+			cout<<endl;
+			libro->setTitle(title);
+			libro->setAutor(autor);
+			libro->setA_pub(a_pub);
+			libro->setPrecio(precio);
+			libro->setEstado(estado);
+			array[pos]=libro;
+		}
 	}
-	cout<<endl;
-	//array[pos]->getTitle()->setTitle(title);
-	array[pos]->setAutor(autor);
-	array[pos]->setA_pub(a_pub);
-	array[pos]->setPrecio(precio);
-	array[pos]->setEstado(estado);
 }
+

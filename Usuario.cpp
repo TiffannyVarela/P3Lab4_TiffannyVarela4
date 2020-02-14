@@ -1,11 +1,13 @@
 #include "Usuario.h"
 #include <iostream>
+#include <string>
+using std::string;
 using namespace std;
 
 Usuario::Usuario(){
-	user="";
-	pass="";
-	name="";
+	user="a";
+	pass=" ";
+	name=" ";
 	edad=0;
 	dinero=0.0;
 }
@@ -56,6 +58,21 @@ double Usuario::getDinero(){
 
 void Usuario::setDinero(double dinero){
 	dinero=dinero;
+}
+
+string Usuario::toString(){
+	if (user=="a")
+	{
+		cout<<"Posicion Vacia"<<endl;
+	}
+	else{
+		cout<<"Usuario: "<<user<<endl
+		<<"Contrasenia: "<<pass<<endl
+		<<"Nombre: "<<name<<endl
+		<<"Edad: "<<edad<<endl
+		<<"Dinero: "<<dinero<<endl;
+	}
+	return "";
 }
 
 Usuario::~Usuario(){

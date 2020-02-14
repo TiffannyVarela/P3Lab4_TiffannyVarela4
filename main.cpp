@@ -1,6 +1,6 @@
 #include "Usuario.h"
 #include "Libro.h"
-#include <iosstream>
+#include <iostream>
 #include <string>
 using namespace std;
 
@@ -15,7 +15,7 @@ void freeArray(Usuario**);
 //leer el contenido
 void readArray(Usuario**,int);
 
-int main(int argc, char const *argv[])
+int main()
 {
 	int resp=-1;
 	int opc=-1;
@@ -29,9 +29,14 @@ int main(int argc, char const *argv[])
 	lista[0]=usuario;
 	do
 	{
-
+		readArray(lista,tam);
+		printArray(lista,tam);
+		freeArray(lista);
+		cout<<"Desea volver al programa \n1.Si\n2.No"<<endl;
+		cin>>resp;
 	} while (resp!=2);
 
+	delete usuario;
 	return 0;
 }
 
@@ -78,3 +83,28 @@ int menuAdmin(){//inicio metodo menu
  	}//end del while
         return 0;
 }//fin metodo menu
+
+Usuario** inicializar( int size){//inicio inicializar
+	Usuario** retval = new Usuario*[size];
+	return retval;
+}//fin inicializar
+
+void printArray (Usuario** array, int size){//inicio print array
+	for(int i=0; i<size;i++){
+		array[i]->toString();
+	}
+	cout<<endl;
+}//fin print array
+
+void freeArray(Usuario** array){//inicio free array
+	if (array!=NULL){
+		delete[] array;
+	}
+}//fin free array
+
+void readArray(Usuario** array,int size){//inicio read array
+	for(int i=1; i<size;i++){
+		array[i]= new Usuario();
+	}
+}//fin read array
+

@@ -1,5 +1,6 @@
 #include <typeinfo>
 #include <string>
+using std::string;
 #ifndef LIBRO_H
 #define LIBRO_H
 
@@ -26,6 +27,8 @@ class Libro
 
 		string getEstado();
 		void setEstado(string);
+		
+		string toString();
 
 		~Libro();
 	

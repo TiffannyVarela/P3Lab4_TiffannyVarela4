@@ -3,11 +3,11 @@
 using namespace std;
 
 Libro::Libro(){
-	title="";
-	autor="";
-	a_pub="";
+	title="a";
+	autor=" ";
+	a_pub=" ";
 	precio=0.0;
-	estado="";
+	estado=" ";
 }
 
 Libro::Libro(string title, string autor, string a_pub, double precio, string estado){
@@ -56,6 +56,21 @@ string Libro::getEstado(){
 
 void Libro::setEstado(string estado){
 	estado=estado;
+}
+
+string Libro::toString(){
+	if (title=="a")
+	{
+		cout<<"Posicion Vacia"<<endl;
+	}
+	else{
+		cout<<"Titulo: "<<title<<endl
+		<<"Autor: "<<autor<<endl
+		<<"Anio de Publicacion: "<<a_pub<<endl
+		<<"Precio: "<<precio<<endl
+		<<"Estado: "<<estado<<endl;
+	}
+	return "";
 }
 
 Libro::~Libro(){

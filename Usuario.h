@@ -1,5 +1,6 @@
 #include <typeinfo>
 #include <string>
+using std::string;
 #ifndef USUARIO_H
 #define USUARIO_H
 
@@ -27,6 +28,8 @@ class Usuario
 
 		double getDinero();
 		void setDinero(double);
+
+		string toString();
 
 		~Usuario();
 	

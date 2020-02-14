@@ -54,7 +54,10 @@ int main()
 	Libro** listaL = inicializarLibro(tam);
 	Libro* libro;
 
-	string autor, titulo;
+	string title, autor, a_pub, estado;
+	double precio;
+	string titulo;
+	Libro* book;
 	int compra;
 
 	int pos_mod=-1;
@@ -90,8 +93,41 @@ int main()
 								printArrayLibro(listaL,tam);
 								cout<<"\nIngrese la Posicion a Modificar: ";
 								cin>>pos_mod;
-								modLibro(listaL,pos_mod);
-								printArrayLibro(listaL,tam);
+								//modLibro(&listaL[0],pos_mod);
+								//
+								//
+								//
+								
+	for (int i = 0; i < 10; ++i)
+	{
+		if(i==pos_mod){
+			cout<<"Titulo: ";
+			getline(cin,title);
+			getline(cin,title);
+			cout<<"Autor: ";
+			getline(cin,autor);
+			getline(cin,autor);
+			cout<<"Anio de publicacion: ";
+			cin>>a_pub;
+			cout<<"Precio: ";
+			cin>>precio;
+			cout<<"Estado: ";
+			cin>>estado;
+			while(precio<0){
+				cout<<"Ingrese un Valor Valido"<<endl;
+				cout<<"Precio: ";
+				cin>>precio;
+			}
+			cout<<endl;
+			book->setTitle(title);
+			//*(array[pos])->setAutor(autor);
+			//*(array[pos])->setA_pub(a_pub);
+			//*(array[pos])->setPrecio(precio);
+			//*(array[pos])->setEstado(estado);
+			//array[pos]=libro;
+		}
+	}
+printArrayLibro(listaL,tam);
 								pos_mod=-1;
 								break;
 
@@ -404,11 +440,11 @@ void modLibro(Libro** array,int pos){
 			}
 			cout<<endl;
 			libro->setTitle(title);
-			libro->setAutor(autor);
-			libro->setA_pub(a_pub);
-			libro->setPrecio(precio);
-			libro->setEstado(estado);
-			array[pos]=libro;
+			//*(array[pos])->setAutor(autor);
+			//*(array[pos])->setA_pub(a_pub);
+			//*(array[pos])->setPrecio(precio);
+			//*(array[pos])->setEstado(estado);
+			//array[pos]=libro;
 		}
 	}
 }
